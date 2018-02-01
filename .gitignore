@@ -1,0 +1,11 @@
+#Root directory
+
+*.iml
+*.log
+**/target/
+**/.gradle/*
+**/gradle/*
+**/.idea/*
+**/build/*
+**/out/*
+**/application-local.yml

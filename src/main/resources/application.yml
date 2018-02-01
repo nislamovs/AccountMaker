@@ -1,0 +1,58 @@
+---
+server:
+  port: 8080
+  contextPath: /accountmaker
+---
+application:
+  version: 1.0.0
+  deploymentdate: 07.01.2018
+---
+webdrivers:
+  phantomjs:
+    path: "src/main/resources/utils/phantomjs"
+    port: 3650
+    enableJavascript: true
+    enableWebStorage: true
+  gecko:
+    path: "src/main/resources/utils/geckodriver"
+  chrome:
+    path: "src/main/resources/utils/chromedriver"
+---
+email:
+  smtp:
+    host: smtp.gmail.com
+    port: 465
+    protocol: smtps
+alert:
+  email:
+    username: mailaddress@gmail.com
+    password: password
+    from: AccountMaker.dev.do-not-reply@gmail.com
+    to: your_mail@gmail.com
+    replyto: accountmaker@gmail.com
+    subject:
+      prefix: AccountMaker failure @ dev
+    ignorePatterns:
+    interval: 5000
+---
+spring:
+  profiles: local, default
+datasource:
+  sampleapp:
+    url: jdbc:mysql://localhost:3306/accountmaker
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+    defaultSchema:
+    maxPoolSize: 20
+    hibernate:
+      hbm2ddl.method: update
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQLDialect
+---
+slack:
+  url: https://hooks.slack.com/services/<enter your api key here>
+---
+temporaryMail:
+  tenMinMail: https://www.10minutesmail.fr/
